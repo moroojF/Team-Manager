@@ -1,24 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Router, Link } from '@reach/router';
+import All from './components/All';
+import One from './components/One';
+import AddForm from './components/AddForm';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <nav className="navbar navbar-expand-lg navbar-light" style={{ backgroundColor: "#E8D0BC" }}>
+        <div className="container" style={{ fontSize: '40px'}}>
+          <h2 className="text-secondary textStyle"><Link to="/players/list" className="textStyle text-secondary">Manage Players</Link>|<Link to="/players/list" className="textStyle text-secondary"> Manage Players Status</Link></h2>
+        </div>
+      </nav>
+      <div className="container">
+        <Router>
+          <All path="/players/list" />
+          <AddForm path="/players/addplayer" />
+          <One path="/view/:_id" />
+        </Router>
+      </div>
+    </>
   );
 }
 
